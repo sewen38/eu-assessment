@@ -67,20 +67,13 @@ if(x.eu_offer==='no'&&(x.education==='bachelor'||x.education==='master'||x.educa
 if(highSalary||x.profession==='research'||x.profession==='artist'||x.startup==='yes')add(r,'法国','Talent Passport全类路径','m','按高薪雇员/创业创新/研究员/艺术文化/投资者/派遣分别核实。');
 if(x.ict==='yes'||x.ict==='maybe')add(r,'法国','Talent Passport Employee on Assignment / ICT','m','适合集团内派遣，需法国接收方和合同安排。');
 if(!r.length)add(r,'欧洲综合','暂未匹配强项目','n','当前资金、收入、雇主或居住偏好不足，建议先明确被动收入/远程收入/雇主offer/投资预算。');
-r.sort(function(a,b){var o={q:0,m:1,n:2};return o[a.status]-o[b.status]});var q=r.filter(x=>x.status==='q'),m=r.filter(x=>x.status==='m');var h='<div class="rs-card" style="border-left:4px solid #22c55e"><h3>📊 欧洲综合评估结果</h3>';if(q.length)h+='<p>🎉 可优先做 '+q.length+' 个项目：</p>'+q.map(x=>'<span class="tag tg">'+x.country+' · '+x.project+'</span>').join(' ');if(m.length)h+='<p style="margin-top:10px">⚠️ 有条件 '+m.length+' 个项目：</p>'+m.map(x=>'<span class="tag ty">'+x.country+' · '+x.project+'</span>').join(' ');h+='</div><div class="rs-card"><h3>📋 逐项判断</h3>';r.forEach(function(x){var cl=x.status==='q'?'el':x.status==='m'?'mb':'no', lab={q:'✅ 可做',m:'⚠️ 有条件',n:'❌ 暂不适合'}[x.status];h+='<div class="prog '+cl+'"><h4>'+x.country+' — '+x.project+'</h4><span class="st st-'+x.status+'">'+lab+'</span><div class="d">'+x.why+'</div></div>'});h+='</div><div class="rs-card"><h3>📊 国家/路径速览</h3><table><tr><th>客户目标</th><th>优先国家/项目</th></tr><tr><td>低居住+投资</td><td>葡萄牙D9/ARI、希腊黄金签证、马耳他MPRP</td></tr><tr><td>被动收入/退休</td><td>葡萄牙D7、西班牙NLV、法国Visitor</td></tr><tr><td>远程收入</td><td>葡萄牙D8、西班牙DNV、希腊DNV</td></tr><tr><td>高薪雇主</td><td>德国蓝卡、荷兰HSM/蓝卡、法国Talent Passport</td></tr><tr><td>创业</td><td>葡萄牙D2、荷兰Startup、法国Founder、德国Self-employed</td></tr><tr><td>派遣ICT</td><td>荷兰ICT、法国ICT/派遣、德国ICT</td></tr></table></div><div class="hb w">⚠️ 本评估由AI基于问卷自动生成，仅供初步筛选，不构成法律/税务意见。实际申请需以各国移民局最新政策和持牌律师/顾问意见为准。</div>';    // Build project options from r array
-    var ptAriStat='n',grStat='n',mtStat='n';
-    r.forEach(function(x){
-      if(x.country==='葡萄牙'&&x.project.indexOf('ARI')>=0) ptAriStat=x.status;
-      if(x.country==='希腊') grStat=x.status;
-      if(x.country==='马耳他') mtStat=x.status;
-    });
+r.sort(function(a,b){var o={q:0,m:1,n:2};return o[a.status]-o[b.status]});var q=r.filter(x=>x.status==='q'),m=r.filter(x=>x.status==='m');var h='<div class="rs-card" style="border-left:4px solid #22c55e"><h3>📊 欧洲综合评估结果</h3>';if(q.length)h+='<p>🎉 可优先做 '+q.length+' 个项目：</p>'+q.map(x=>'<span class="tag tg">'+x.country+' · '+x.project+'</span>').join(' ');if(m.length)h+='<p style="margin-top:10px">⚠️ 有条件 '+m.length+' 个项目：</p>'+m.map(x=>'<span class="tag ty">'+x.country+' · '+x.project+'</span>').join(' ');h+='</div><div class="rs-card"><h3>📋 逐项判断</h3>';r.forEach(function(x){var cl=x.status==='q'?'el':x.status==='m'?'mb':'no', lab={q:'✅ 可做',m:'⚠️ 有条件',n:'❌ 暂不适合'}[x.status];h+='<div class="prog '+cl+'"><h4>'+x.country+' — '+x.project+'</h4><span class="st st-'+x.status+'">'+lab+'</span><div class="d">'+x.why+'</div></div>'});h+='</div><div class="rs-card"><h3>📊 国家/路径速览</h3><table><tr><th>客户目标</th><th>优先国家/项目</th></tr><tr><td>低居住+投资</td><td>葡萄牙D9/ARI、希腊黄金签证、马耳他MPRP</td></tr><tr><td>被动收入/退休</td><td>葡萄牙D7、西班牙NLV、法国Visitor</td></tr><tr><td>远程收入</td><td>葡萄牙D8、西班牙DNV、希腊DNV</td></tr><tr><td>高薪雇主</td><td>德国蓝卡、荷兰HSM/蓝卡、法国Talent Passport</td></tr><tr><td>创业</td><td>葡萄牙D2、荷兰Startup、法国Founder、德国Self-employed</td></tr><tr><td>派遣ICT</td><td>荷兰ICT、法国ICT/派遣、德国ICT</td></tr></table></div><div class="hb w">⚠️ 本评估由AI基于问卷自动生成，仅供初步筛选，不构成法律/税务意见。实际申请需以各国移民局最新政策和持牌律师/顾问意见为准。</div>';    // Build project options from r array - include ALL q/m items
     var projectOpts=[];
-    projectOpts.push({v:'pt-ari-fund', s:ptAriStat, d:'葡萄牙黄金签证（ARI）· 投资基金€50万 · 每年7天'});
-    projectOpts.push({v:'pt-ari-cultural', s:ptAriStat==='n'?'n':'m', d:'葡萄牙黄金签证（ARI）· 文化捐赠€25万 · 每年7天'});
-    projectOpts.push({v:'gr-gv-800k', s:grStat, d:'希腊投资者永居 · 核心区购房€80万 · 无居住要求'});
-    projectOpts.push({v:'gr-gv-400k', s:grStat==='n'?'n':'m', d:'希腊投资者永居 · 非核心区购房€40万 · 无居住要求'});
-    projectOpts.push({v:'gr-gv-250k', s:grStat==='n'?'n':'m', d:'希腊投资者永居 · 商改住/保护建筑€25万 · 无居住要求'});
-    projectOpts.push({v:'mt-mprp', s:mtStat, d:'马耳他永久居留计划（MPRP）· 政府捐款+租房/购房'});
+    r.forEach(function(x){
+      if(x.status==='n') return;
+      var v='eu-'+x.country.toLowerCase()+'-'+x.project.replace(/[^a-zA-Z0-9\u4e00-\u9fa5]+/g,'-').replace(/^-|-$/g,'').substring(0,50);
+      projectOpts.push({v:v, s:x.status, d:x.country+' · '+x.project});
+    });
     var eligible=projectOpts.filter(function(p){return p.s==='q'||p.s==='m';});
     if(eligible.length>0){h+='<div class="rs-card"><h3 style="font-size:16px;margin-bottom:12px;color:#8b1e1e">✅ 通过评估的项目（可多选）</h3>';
     h+='<div class="project-check-grid">';
